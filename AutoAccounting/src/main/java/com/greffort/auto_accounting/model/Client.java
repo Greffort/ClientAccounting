@@ -1,14 +1,24 @@
 package com.greffort.auto_accounting.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+//import
+
 import java.util.UUID;
 
+
+@Getter
+@Setter
+@Log4j
 public class Client {
     private static final String FILL_DEFAULT = "not specified";
-    private static final String FILL_CAR = "new car object";
+    private static final List<Car> FILL_DEFAULT_CAR = new ArrayList<>();
 
     private String name;
     private String lastName;
@@ -17,11 +27,16 @@ public class Client {
     private List<Car> cars;
     private UUID uuid;
 
-    //public Client() {
-    //}
+    public Client() {
+        this(FILL_DEFAULT, FILL_DEFAULT, FILL_DEFAULT_CAR);
+    }
 
     public Client(String name, String phoneNumber, List<Car> cars) {
-        this(name, FILL_DEFAULT, phoneNumber, FILL_DEFAULT, cars, UUID.randomUUID());
+        this(name, FILL_DEFAULT, phoneNumber, FILL_DEFAULT, cars);
+    }
+
+    public Client(String name, String lastName, String phoneNumber, String town, List<Car> cars) {
+        this(name, lastName, phoneNumber, town, cars, UUID.randomUUID());
     }
 
     public Client(String name, String lastName, String phoneNumber, String town, List<Car> cars, UUID uuid) {
@@ -30,62 +45,6 @@ public class Client {
         this.phoneNumber = phoneNumber;
         this.town = town;
         this.cars = cars;
-        this.uuid = uuid;
-    }
-
-    public static String getFillDefault() {
-        return FILL_DEFAULT;
-    }
-
-    public static String getFillCar() {
-        return FILL_CAR;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getTown() {
-        return town;
-    }
-
-    public void setTown(String town) {
-        this.town = town;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
 

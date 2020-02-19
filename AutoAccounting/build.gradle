@@ -1,6 +1,12 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
+
+
+
+
 
 group 'com.greffort'
 version '1.0-SNAPSHOT'
@@ -13,4 +19,17 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // https://mvnrepository.com/artifact/log4j/log4j
+    compile group: 'log4j', name: 'log4j', version: '1.2.16'
+
+    //lombok/annotations
+    compile 'org.projectlombok:lombok:1.16.18'
+    //compile 'org.jetbrains:annotations:15.0'
+
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
